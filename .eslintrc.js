@@ -15,6 +15,7 @@ module.exports = {
     'react/jsx-no-bind': 'off',
     'react/require-default-props': 'off',
     'react/react-in-jsx-scope': 'off',
+    'import/no-extraneous-dependencies': 'off'
   },
   plugins: ['@typescript-eslint/eslint-plugin', 'react-hooks'],
 };

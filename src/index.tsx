@@ -4,6 +4,7 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import 'normalize.css';
+import './mainStyles.module.css';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement,
