@@ -4,8 +4,13 @@ import {
 import React, { useState } from 'react';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
 import styles from './loginPage.module.css';
+import useLoginApi from '../../hooks/api/auth.hook';
+import { LoginForm } from '../../services/http/auth.api';
 
 function LoginPage() {
+  // queries
+  const { mutate: loginRequest, isLoading: loginIsLoading } = useLoginApi();
+
   // states
   const [showPassword, setShowPassword] = useState(false);
   const [email, setEmail] = useState('');
@@ -16,7 +21,11 @@ function LoginPage() {
   const handleMouseDownPassword = (event: React.MouseEvent<HTMLButtonElement>) => event.preventDefault();
 
   const handleLogin = () => {
-    console.log('login');
+    loginRequest(loginForm, {
+      onSuccess: () => {
+        console.log('success');
+      },
+    });
   };
 
   const handleCreateAccount = () => console.log('create account');
@@ -63,6 +72,8 @@ function LoginPage() {
           variant="contained"
           sx={{ width: '100%', fontSize: '1.2rem', fontWeight: 'bold' }}
           size="large"
+          color="primary"
+          loading={loginIsLoading}
           onClick={handleLogin}
         >
           Log In

@@ -9,8 +9,8 @@ interface LoginResponse {
   token: string;
 }
 
+const login = (form: LoginForm) => axios.post<LoginResponse>('/login', form);
+
 export default {
-  async login(form: LoginForm) {
-    const res = await axios.post<LoginResponse>('/login', form);
-  },
+  login,
 };
