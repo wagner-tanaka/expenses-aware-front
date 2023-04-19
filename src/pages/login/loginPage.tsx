@@ -1,8 +1,9 @@
 import {
-  Button, FormControl, IconButton, InputAdornment, InputLabel, Link, OutlinedInput, TextField,
+  Button, CircularProgress, FormControl, IconButton, InputAdornment, InputLabel, Link, OutlinedInput, TextField,
 } from '@mui/material';
 import React, { useState } from 'react';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
+import { LoadingButton } from '@mui/lab';
 import styles from './loginPage.module.css';
 import useLoginApi from '../../hooks/api/auth.hook';
 import { LoginForm } from '../../services/http/auth.api';
@@ -13,8 +14,7 @@ function LoginPage() {
 
   // states
   const [showPassword, setShowPassword] = useState(false);
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [loginForm, setLoginForm] = useState<LoginForm>({});
 
   // methods
   const handleClickShowPassword = () => setShowPassword((show) => !show);
@@ -43,8 +43,8 @@ function LoginPage() {
           label="Email"
           variant="outlined"
           sx={{ width: '100%' }}
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          value={loginForm.email}
+          onChange={(e) => setLoginForm({ ...loginForm, email: e.target.value })}
         />
         <FormControl sx={{ width: '100%' }} variant="outlined">
           <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
@@ -64,11 +64,11 @@ function LoginPage() {
               </InputAdornment>
               )}
             label="Password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            value={loginForm.password}
+            onChange={(e) => setLoginForm({ ...loginForm, password: e.target.value })}
           />
         </FormControl>
-        <Button
+        <LoadingButton
           variant="contained"
           sx={{ width: '100%', fontSize: '1.2rem', fontWeight: 'bold' }}
           size="large"
@@ -77,7 +77,7 @@ function LoginPage() {
           onClick={handleLogin}
         >
           Log In
-        </Button>
+        </LoadingButton>
         <div className={styles.forgotPasswordContainer}>
           <Link href="www.google.com" underline="hover">
             Forgot Password

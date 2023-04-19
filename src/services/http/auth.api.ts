@@ -1,8 +1,8 @@
 import axios from 'axios';
 
-interface LoginForm {
-  email: string;
-  password: string;
+export interface LoginForm {
+  email?: string;
+  password?: string;
 }
 
 interface LoginResponse {
