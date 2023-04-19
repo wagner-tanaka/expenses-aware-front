@@ -8,10 +8,6 @@
     justify-content: center;
 }
 
-.mainContainer {
-
-}
-
 .loginMessage {
     color: var(--defaultTextColor);
     display: flex;
@@ -29,7 +25,11 @@
 }
 
 .mainContent {
-    padding: 0 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0 15px 20px 15px;
     width: 380px;
     border-radius: 10px;
     background-color: #fff;
@@ -40,11 +40,13 @@
     margin-bottom: 10px;
 }
 
-.signUpContainer {
+.forgotPasswordContainer {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 10px 0 25px;
+    border-bottom : 2px solid #D5D5D5;
+    padding-bottom: 30px;
+    width: 100%;
 }
 
 @media (max-width: 480px) {

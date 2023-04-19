@@ -8,59 +8,82 @@ import styles from './loginPage.module.css';
 function LoginPage() {
   // states
   const [showPassword, setShowPassword] = useState(false);
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
   // methods
   const handleClickShowPassword = () => setShowPassword((show) => !show);
   const handleMouseDownPassword = (event: React.MouseEvent<HTMLButtonElement>) => event.preventDefault();
 
+  const handleLogin = () => {
+    console.log('login');
+  };
+
+  const handleCreateAccount = () => console.log('create account');
+
   return (
     <div className={styles.bodyContainer}>
-      <div className={styles.mainContainer}>
-        <div className={styles.logoContainer}>
-          Money Wise
+      <div className={styles.logoContainer}>
+        Money Wise
+      </div>
+      <div className={styles.mainContent}>
+        <div className={styles.loginMessage}>
+          Log Into Money Wise
         </div>
-        <div className={styles.mainContent}>
-          <div className={styles.loginMessage}>
-            Log Into Money Wise
-          </div>
-          <TextField
-            label="Email"
-            variant="outlined"
+        <TextField
+          label="Email"
+          variant="outlined"
+          sx={{ width: '100%' }}
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+        <FormControl sx={{ width: '100%' }} variant="outlined">
+          <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
+          <OutlinedInput
+            type={showPassword ? 'text' : 'password'}
             sx={{ width: '100%' }}
-          />
-          <FormControl sx={{ width: '100%' }} variant="outlined">
-            <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
-            <OutlinedInput
-              type={showPassword ? 'text' : 'password'}
-              sx={{ width: '100%' }}
-              endAdornment={(
-                <InputAdornment position="end">
-                  <IconButton
-                    aria-label="toggle password visibility"
-                    onClick={handleClickShowPassword}
-                    onMouseDown={handleMouseDownPassword}
-                    edge="end"
-                  >
-                    {showPassword ? <VisibilityOff /> : <Visibility />}
-                  </IconButton>
-                </InputAdornment>
+            endAdornment={(
+              <InputAdornment position="end">
+                <IconButton
+                  aria-label="toggle password visibility"
+                  onClick={handleClickShowPassword}
+                  onMouseDown={handleMouseDownPassword}
+                  edge="end"
+                >
+                  {showPassword ? <Visibility /> : <VisibilityOff />}
+                </IconButton>
+              </InputAdornment>
               )}
-              label="Password"
-            />
-          </FormControl>
-          <Button
-            variant="contained"
-            sx={{ width: '100%', fontSize: '1.2rem', fontWeight: 'bold' }}
-            size="large"
-          >
-            Log In
-          </Button>
-          <div className={styles.signUpContainer}>
-            <Link href="www.google.com" underline="hover">
-              Sign Up
-            </Link>
-          </div>
+            label="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+        </FormControl>
+        <Button
+          variant="contained"
+          sx={{ width: '100%', fontSize: '1.2rem', fontWeight: 'bold' }}
+          size="large"
+          onClick={handleLogin}
+        >
+          Log In
+        </Button>
+        <div className={styles.forgotPasswordContainer}>
+          <Link href="www.google.com" underline="hover">
+            Forgot Password
+          </Link>
         </div>
+        <Button
+          variant="contained"
+          color="success"
+          sx={{
+            width: '70%', fontSize: '1.2rem', fontWeight: 'bold', marginTop: '20px', marginBottom: '20px',
+          }}
+          size="large"
+          onClick={handleCreateAccount}
+          disabled
+        >
+          Create Account
+        </Button>
       </div>
     </div>
   );
