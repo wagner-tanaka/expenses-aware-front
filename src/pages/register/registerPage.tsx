@@ -1,19 +1,14 @@
 import {
-  Button, CircularProgress, FormControl, IconButton, InputAdornment, InputLabel, Link, OutlinedInput, TextField,
+  Button, FormControl, IconButton, InputAdornment, InputLabel, Link, OutlinedInput, TextField,
 } from '@mui/material';
 import React, { useState } from 'react';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
 import { LoadingButton } from '@mui/lab';
-import { useNavigate } from 'react-router-dom';
-import styles from './loginPage.module.css';
+import styles from './registerPage.module.css';
 import useLoginApi from '../../hooks/api/auth.hook';
 import { LoginForm } from '../../services/http/auth.api';
-import routes from '../../utils/routes';
 
-function LoginPage() {
-  // hooks
-  const navigate = useNavigate();
-
+function RegisterPage() {
   // queries
   const { mutate: loginRequest, isLoading: loginIsLoading } = useLoginApi();
 
@@ -33,7 +28,7 @@ function LoginPage() {
     });
   };
 
-  const handleCreateAccount = () => navigate(routes.register);
+  const handleCreateAccount = () => console.log('create account');
 
   return (
     <div className={styles.bodyContainer}>
@@ -42,7 +37,23 @@ function LoginPage() {
       </div>
       <div className={styles.mainContent}>
         <div className={styles.loginMessage}>
-          Log Into Money Wise
+          Sign Up
+        </div>
+        <div className={styles.nameContainer}>
+          <TextField
+            label="Email"
+            variant="outlined"
+            sx={{ width: '100%' }}
+            value={loginForm.email}
+            onChange={(e) => setLoginForm({ ...loginForm, email: e.target.value })}
+          />
+          <TextField
+            label="Email"
+            variant="outlined"
+            sx={{ width: '100%' }}
+            value={loginForm.email}
+            onChange={(e) => setLoginForm({ ...loginForm, email: e.target.value })}
+          />
         </div>
         <TextField
           label="Email"
@@ -73,21 +84,7 @@ function LoginPage() {
             onChange={(e) => setLoginForm({ ...loginForm, password: e.target.value })}
           />
         </FormControl>
-        <LoadingButton
-          variant="contained"
-          sx={{ width: '100%', fontSize: '1.2rem', fontWeight: 'bold' }}
-          size="large"
-          color="primary"
-          loading={loginIsLoading}
-          onClick={handleLogin}
-        >
-          Log In
-        </LoadingButton>
-        <div className={styles.forgotPasswordContainer}>
-          <Link href="www.google.com" underline="hover">
-            Forgot Password
-          </Link>
-        </div>
+
         <Button
           variant="contained"
           color="success"
@@ -104,4 +101,4 @@ function LoginPage() {
   );
 }
 
-export default LoginPage;
+export default RegisterPage;

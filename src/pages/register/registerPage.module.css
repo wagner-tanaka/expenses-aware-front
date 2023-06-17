@@ -1,0 +1,64 @@
+.bodyContainer {
+    background-color: var(--defaultBackgroundColor);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.loginMessage {
+    color: var(--defaultTextColor);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 25px 0 15px 0;
+}
+
+.logoContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 50px;
+    padding: 20px 0;
+}
+
+.mainContent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0 15px 20px 15px;
+    width: 380px;
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+}
+
+.mainContent > div, .mainContent > button{
+    margin-bottom: 10px;
+}
+
+.nameContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.forgotPasswordContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom : 2px solid #D5D5D5;
+    padding-bottom: 30px;
+    width: 100%;
+}
+
+@media (max-width: 480px) {
+    .mainContent {
+        width: 80%;
+        margin: auto auto;
+    }
+}

@@ -6,6 +6,7 @@ import {
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import routes from './utils/routes';
 import LoginPage from './pages/login/loginPage';
+import RegisterPage from './pages/register/registerPage';
 
 function App() {
   // const [queryClient] = useState(
@@ -30,6 +31,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Navigate to={routes.login} />} />
           <Route path={routes.login} element={<LoginPage />} />
+          <Route path={routes.register} element={<RegisterPage />} />
         </Routes>
       </BrowserRouter>
     </QueryClientProvider>
